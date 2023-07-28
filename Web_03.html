@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PHP</title>
+  </head>
+  <style>
+      form {
+        display: flex; 
+        justify-content: center; 
+        margin:100px 550px;
+        background-color: #313177;
+        width: 340px;
+        height: 400px;
+      } 
+  </style>
+  <body>
+    <form>
+      <table>
+        <tr>
+          <td colspan="2">
+            <input type="button" value="sign Up" style="width: 100%">
+          </td>
+        </tr><br>      
+        <tr>
+          <td>First Name</td>
+          <td>
+            <input type="text" placeholder="Enter First Name" id="fname">
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <input type="text" placeholder="Enter Last Name" id="lname">
+          </td>
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td>
+            <input type="date">
+          </td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>
+            <input type="radio" name="gender">Male
+            <input type="radio" name="gender">Female
+          </td>
+        </tr>
+        <tr>
+          <td>Country</td>
+          <td>
+            <select>
+              <option value="0">Select Country</option>
+              <option value="1">Sri Lanka</option>
+              <option value="2">Malaysia</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>E-mail</td>
+          <td>
+            <input type="mail" placeholder="Enter E-mail" id="mail">
+          </td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>
+            <input type="text" placeholder="Enter Phone" id="phone">
+          </td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td>
+            <input type="password" id="pass">
+          </td>
+        </tr>
+        <tr>
+          <td>Confirm Password</td>
+          <td>
+            <input type="password" id="confirmPass">
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="checkbox">I Agree to the Terms of Use
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="submit" value="Submit" onclick="validation(); validatePhone()">
+            <input type="reset" value="cancel">
+          </td>
+        </tr>
+      </table>
+    </form>
+    
+    <script>
+      
+      function validation(){
+        let fname = document.getElementById('fname').value;
+        let lname = document.getElementById('lname').value;
+        let mail = document.getElementById('mail').value;
+        let phone = document.getElementById('phone').value;
+        let pass = document.getElementById('pass').value;
+        let confirmPass = document.getElementById('confirmPass').value;
+        
+        const phonePattern = /^[0-9]+$/;	/*/^\d{10}$/ \d is equivalent to [0-9] 10 digitis vs reading the string until the end*/
+        const emailPattern = /^[a-zA-Z0-9._%=-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        
+
+        if(fname==="" || lname==="" || mail==="" || phone==="")
+          alert('please fill in all the boxes');
+        else if(!emailPattern.test(mail))
+          alert('invalid e-mail address');
+        else if(!phonePattern.test(phone))
+          alert('phone number should be all integers');
+        else if(phone.length!==10)
+          alert('phone number shoud have 10 characters');
+        
+        if(pass !== confirmPass)
+          alert('your passwords does not match');
+      }     
+    </script>
+  </body>
+</html>
